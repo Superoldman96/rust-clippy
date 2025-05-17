@@ -94,6 +94,7 @@ mod cargo;
 mod casts;
 mod cfg_not_test;
 mod checked_conversions;
+mod cloned_ref_to_slice_refs;
 mod cognitive_complexity;
 mod collapsible_if;
 mod collection_is_never_read;
@@ -746,7 +747,7 @@ pub fn register_lints(store: &mut rustc_lint::LintStore, conf: &'static Conf) {
     store.register_late_pass(move |_| Box::new(unused_self::UnusedSelf::new(conf)));
     store.register_late_pass(|_| Box::new(mutable_debug_assertion::DebugAssertWithMutCall));
     store.register_late_pass(|_| Box::new(exit::Exit));
-    store.register_late_pass(|_| Box::new(to_digit_is_some::ToDigitIsSome));
+    store.register_late_pass(move |_| Box::new(to_digit_is_some::ToDigitIsSome::new(conf)));
     store.register_late_pass(move |_| Box::new(large_stack_arrays::LargeStackArrays::new(conf)));
     store.register_late_pass(move |_| Box::new(large_const_arrays::LargeConstArrays::new(conf)));
     store.register_late_pass(|_| Box::new(floating_point_arithmetic::FloatingPointArithmetic));
@@ -942,5 +943,6 @@ pub fn register_lints(store: &mut rustc_lint::LintStore, conf: &'static Conf) {
     store.register_late_pass(|_| Box::new(manual_option_as_slice::ManualOptionAsSlice::new(conf)));
     store.register_late_pass(|_| Box::new(single_option_map::SingleOptionMap));
     store.register_late_pass(move |_| Box::new(redundant_test_prefix::RedundantTestPrefix));
+    store.register_late_pass(|_| Box::new(cloned_ref_to_slice_refs::ClonedRefToSliceRefs::new(conf)));
     // add lints here, do not remove this comment, it's used in `new_lint`
 }
