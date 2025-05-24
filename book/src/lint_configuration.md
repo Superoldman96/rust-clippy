@@ -71,6 +71,16 @@ Whether `dbg!` should be allowed in test functions or `#[cfg(test)]`
 * [`dbg_macro`](https://rust-lang.github.io/rust-clippy/master/index.html#dbg_macro)
 
 
+## `allow-exact-repetitions`
+Whether an item should be allowed to have the same name as its containing module
+
+**Default Value:** `true`
+
+---
+**Affected lints:**
+* [`module_name_repetitions`](https://rust-lang.github.io/rust-clippy/master/index.html#module_name_repetitions)
+
+
 ## `allow-expect-in-consts`
 Whether `expect` should be allowed in code always evaluated at compile time
 
@@ -826,6 +836,7 @@ The minimum rust version that the project supports. Defaults to the `rust-versio
 * [`manual_repeat_n`](https://rust-lang.github.io/rust-clippy/master/index.html#manual_repeat_n)
 * [`manual_retain`](https://rust-lang.github.io/rust-clippy/master/index.html#manual_retain)
 * [`manual_slice_fill`](https://rust-lang.github.io/rust-clippy/master/index.html#manual_slice_fill)
+* [`manual_slice_size_calculation`](https://rust-lang.github.io/rust-clippy/master/index.html#manual_slice_size_calculation)
 * [`manual_split_once`](https://rust-lang.github.io/rust-clippy/master/index.html#manual_split_once)
 * [`manual_str_repeat`](https://rust-lang.github.io/rust-clippy/master/index.html#manual_str_repeat)
 * [`manual_strip`](https://rust-lang.github.io/rust-clippy/master/index.html#manual_strip)
@@ -849,6 +860,7 @@ The minimum rust version that the project supports. Defaults to the `rust-versio
 * [`same_item_push`](https://rust-lang.github.io/rust-clippy/master/index.html#same_item_push)
 * [`seek_from_current`](https://rust-lang.github.io/rust-clippy/master/index.html#seek_from_current)
 * [`seek_rewind`](https://rust-lang.github.io/rust-clippy/master/index.html#seek_rewind)
+* [`to_digit_is_some`](https://rust-lang.github.io/rust-clippy/master/index.html#to_digit_is_some)
 * [`transmute_ptr_to_ref`](https://rust-lang.github.io/rust-clippy/master/index.html#transmute_ptr_to_ref)
 * [`tuple_array_conversions`](https://rust-lang.github.io/rust-clippy/master/index.html#tuple_array_conversions)
 * [`type_repetition_in_bounds`](https://rust-lang.github.io/rust-clippy/master/index.html#type_repetition_in_bounds)
@@ -1014,7 +1026,7 @@ The order of associated items in traits.
 The maximum size (in bytes) to consider a `Copy` type for passing by value instead of by
 reference.
 
-**Default Value:** `target_pointer_width * 2`
+**Default Value:** `target_pointer_width`
 
 ---
 **Affected lints:**
